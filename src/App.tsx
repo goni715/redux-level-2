@@ -1,11 +1,13 @@
-import UserInfoWithUseReducer from "./components/State/UserInfoWithUseReducer";
+import TodoForm from "./components/todo/TodoForm";
+import TodoProvider from "./context/TodoProvider";
 
 
 const App = () => {
   return (
     <>
-      <h1>React App</h1>
-      <UserInfoWithUseReducer/>
+      <TodoProvider>
+        <TodoForm/>
+      </TodoProvider>
     </>
   );
 };
