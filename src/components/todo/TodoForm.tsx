@@ -1,18 +1,19 @@
 import { FormEvent, useContext, useState } from "react";
-import { TodoContext } from "../../context/TodoProvider";
+import { TodoContext, TTodo } from "../../context/TodoProvider";
 
 const TodoForm = () => {
-    const {state, dispatch} = useContext(TodoContext);
+    const {dispatch} = useContext(TodoContext);
     const [task, setTask] = useState('');
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        const newTodo = {
+        const newTodo : TTodo = {
             id: Math.random().toString(),
             title: task,
             isCompleted: false
         }
-        dispatch({type:'addTodo', payload: newTodo})
+        dispatch({type:'addTodo', payload: newTodo});
+        setTask('');
     }
 
 
@@ -25,7 +26,8 @@ const TodoForm = () => {
           <h1>Add Todo</h1>
           <form onSubmit={handleSubmit}>
             <input
-              onBlur={(e) => setTask(e.target.value)}
+              value={task}
+              onChange={(e) => setTask(e.target.value)}
               type="text"
               className="border border-gray-800 rounded-md px-3 py-2"
               placeholder="Enter task"
@@ -33,7 +35,7 @@ const TodoForm = () => {
             />
             <button
               type="submit"
-              className="px-3 py-2 bg-purple-500 hover:bg-purple-700 text-white mt-3 rounded-md"
+              className="ml-2 px-3 py-2 bg-purple-500 hover:bg-purple-700 text-white mt-3 rounded-md"
             >
               Submit
             </button>
