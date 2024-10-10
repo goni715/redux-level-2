@@ -1,15 +1,10 @@
-import TodoForm from "./components/todo/TodoForm";
-import TodoList from "./components/todo/TodoList";
-import TodoProvider from "./context/TodoProvider";
+import Counter from "./components/counter/Counter";
 
 
 const App = () => {
   return (
     <>
-      <TodoProvider>
-        <TodoForm/>
-        <TodoList/>
-      </TodoProvider>
+      <Counter/>
     </>
   );
 };
